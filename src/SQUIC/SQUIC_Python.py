@@ -19,7 +19,7 @@ See help(SQUIC) for further details.
 # Usage :
 #################
 Arguments:
-    libSQUIC_path:  path to libSQUIC; e.g., /User/bob/ (note the slash at the end).
+    libSQUIC_path:  path to libSQUIC; e.g., /User/bob.
 
     """    
 
@@ -27,9 +27,9 @@ Arguments:
 
     libSQUIC_loc = libSQUIC_path
     if sys.platform.startswith('darwin'):
-        libSQUIC_loc=libSQUIC_loc+"libSQUIC.dylib"
+        libSQUIC_loc=libSQUIC_loc+"/libSQUIC.dylib"
     elif sys.platform.startswith('linux'):
-        libSQUIC_loc=libSQUIC_loc+"libSQUIC.so"
+        libSQUIC_loc=libSQUIC_loc+"/libSQUIC.so"
     else:
         raise Exception("#SQUIC: OS not supported.");
 
