@@ -30,7 +30,7 @@ import SQUIC
 import numpy as np
 
 # set location of libSQUIC (set after importing package)
-SQUIC.PATH_TO_libSQUIC('/path/to/squic/')
+SQUIC.PATH_TO_libSQUIC('/path/to/squic')
 
 # generate sample from tridiagonal precision matrix
 p = 10
