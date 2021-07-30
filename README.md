@@ -33,7 +33,7 @@ import numpy as np
 SQUIC.PATH_TO_libSQUIC('/path/to/squic')
 
 # generate sample from tridiagonal precision matrix
-p = 10
+p = 1024
 n = 100
 l = .4
 
