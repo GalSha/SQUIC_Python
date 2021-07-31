@@ -1,9 +1,7 @@
 from ctypes import *
 import numpy as np
-import os
 import sys
 from scipy.sparse import csr_matrix, identity
-from pathlib import Path
 
 dll = None
 
