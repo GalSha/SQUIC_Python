@@ -1,6 +1,6 @@
-# SQUIC Python Interface Package
+# SQUIC Python3 Interface Package
 
-SQUIC is a second-order, L1-regularized maximum likelihood method for performant large-scale sparse precision matrix estimation. This repository contains the source code for the Python interface of SQUIC. 
+SQUIC is a second-order, L1-regularized maximum likelihood method for performant large-scale sparse precision matrix estimation. This repository contains the source code for the Python(v3) interface of SQUIC. 
 
 ## Installation
 
