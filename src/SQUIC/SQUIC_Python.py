@@ -200,7 +200,7 @@ Return values:
             raise Exception("#SQUIC: M must be square matrix with size pxp..")    
 
         # Make all postive, drop all zeros and force symmetrix
-        M = eliminate_zeros(M);
+        M.eliminate_zeros();
         M = absolute(M);
         M = (M + M)/2; 
 
