@@ -200,9 +200,9 @@ Return values:
             raise Exception("#SQUIC: M must be square matrix with size pxp..")    
 
         # Make all postive, drop all zeros and force symmetrix
-        M.eliminate_zeros();
-        M = absolute(M);
-        M = (M + M)/2; 
+        M.eliminate_zeros()
+        M = abs(M)
+        M = (M + M)/2
 
         M_nnz  = c_long(M.nnz)
         dll.SQUIC_CPP_UTIL_memcopy_integer(byref(M_rinx) , np.int64(M.indices).ctypes.data_as(POINTER(c_long))  , M_nnz       )
