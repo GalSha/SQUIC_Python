@@ -138,15 +138,18 @@ Return values:
         X0= identity(p, dtype='float64', format='csr')
         W0= identity(p, dtype='float64', format='csr')
     else:
+        
+        X0 = csr_matrix(X0)
+        W0 = csr_matrix(W0)
 
         # Check size
         [X0_p,X0_n]=X0.shape
-        if(X0_p!=p or X0_p!=p ):
+        if(X0_p!=p or X0_n!=p ):
             raise Exception("#SQUIC: X0 must be square matrix with size pxp..")
 
         # Check size
         [W0_p,W0_n]=W0.shape
-        if(W0_p!=p or W0_p!=p ):
+        if(W0_p!=p or W0_n!=p ):
             raise Exception("#SQUIC: W0 must be square matrix with size pxp..")    
 
         # Force Symmetric
@@ -193,6 +196,8 @@ Return values:
     if(M==None):
         M_nnz  = c_long(0)
     else:
+        
+        M = csr_matrix(M)
         
         # Check size
         [M_p,M_n]=M.shape
