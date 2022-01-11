@@ -92,7 +92,7 @@ Return values:
  info_trSX: Value of the trace of the sample covariance matrix times the precision matrix.
     """
 
-    if(dll==None):
+    if(dll is None):
         raise Exception("#SQUIC: libSQUIC not loaded, use SQUIC.PATH_TO_libSQUIC(libSQUIC_path).");
 
     p,n= Y.shape
@@ -111,8 +111,6 @@ Return values:
 
     if(tol<=0):
         raise Exception("#SQUIC: tol must be great than zero.");
-
-
 
     #################################################
     # if mode = [0,1,2,3,4] we Block-SQUIC or [5,6,7,8,9] Scalar-SQUIC
@@ -133,7 +131,7 @@ Return values:
     #################################################
 
     # X & W Matrix Checks
-    if(X0==None or W0==None ): 
+    if(X0 is None or W0 is None ): 
         # Make identity sparse matrix.
         X0= identity(p, dtype='float64', format='csr')
         W0= identity(p, dtype='float64', format='csr')
@@ -155,7 +153,6 @@ Return values:
         # Force Symmetric
         X0=(X0+X0.T)/2;
         W0=(W0+W0.T)/2;
-
 
     #################################################
     # Allocate data fo X
@@ -184,8 +181,6 @@ Return values:
     dll.SQUIC_CPP_UTIL_memcopy_integer(byref(W_cptr) , np.int64(W0.indptr).ctypes.data_as(POINTER(c_long))   , c_long(p+1) )
     dll.SQUIC_CPP_UTIL_memcopy_double( byref(W_val)  , W0.data.ctypes.data_as(POINTER(c_double))             , W_nnz       )
 
-
-
     #################################################
     # Check and Allocated data for M
     #################################################
@@ -193,7 +188,7 @@ Return values:
     M_cptr = POINTER(c_long)()
     M_val  = POINTER(c_double)()
 
-    if(M==None):
+    if(M is None):
         M_nnz  = c_long(0)
     else:
         
@@ -302,7 +297,7 @@ Return values:
     dll.SQUIC_CPP_UTIL_memfree_integer(byref(W_cptr))
     dll.SQUIC_CPP_UTIL_memfree_double(byref(W_val))
 
-    if(M!=None):
+    if( not (M is None) ) :
         dll.SQUIC_CPP_UTIL_memfree_integer(byref(M_rinx))
         dll.SQUIC_CPP_UTIL_memfree_integer(byref(M_cptr))
         dll.SQUIC_CPP_UTIL_memfree_double(byref(M_val))
