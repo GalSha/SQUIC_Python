@@ -50,7 +50,8 @@ Arguments:
         raise Exception("#SQUIC: OS not supported.");
 
     dll = CDLL(libSQUIC_loc)
-    print( libSQUIC_loc + " loaded!", dll)
+    
+    return True
 
 
 def run(Y, l, max_iter=100, tol=1e-3,verbose=1, M=None, X0=None, W0=None):
@@ -139,6 +140,9 @@ Return values:
         
         X0 = csr_matrix(X0)
         W0 = csr_matrix(W0)
+        
+        X0.eliminate_zeros()
+        W0.eliminate_zeros()
 
         # Check size
         [X0_p,X0_n]=X0.shape
@@ -193,6 +197,7 @@ Return values:
     else:
         
         M = csr_matrix(M)
+        M.eliminate_zeros()
         
         # Check size
         [M_p,M_n]=M.shape
