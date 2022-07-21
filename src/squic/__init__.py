@@ -88,6 +88,5 @@ Y = np.linalg.solve(L.T,np.random.randn(p,n))
 [X,W,info_times,info_objective,info_logdetX,info_trSX] = SQUIC.run(Y,l)
 """
 
-from .SQUIC_Python import PATH_TO_libSQUIC
-from .SQUIC_Python import run
+from .squic import *
 

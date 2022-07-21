@@ -1,4 +1,4 @@
-# SQUIC_Python.py
+# SQUIC
 #
 # Copyright (C) Aryan Eftekhari
 #
@@ -15,44 +15,28 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-
+import os
 from ctypes import *
 import numpy as np
 import sys
 from scipy.sparse import csr_matrix, identity
 
+lib_custom_location = os.environ.get("SQUIC_LIB_PATH", os.path.dirname(__file__))
+
+squic_libs = {
+    "darwin" : "libSQUIC.dylib",
+    "linux" : "libSQUIC.so"
+}
+
 dll = None
-
-def PATH_TO_libSQUIC(libSQUIC_path):
-    """
-#################
-# Description:
-#################    
-Set the path of libSQUIC. Require only once after importing.
-See help(SQUIC) for further details.
-
-#################
-# Usage :
-#################
-Arguments:
-    libSQUIC_path:  path to libSQUIC; e.g., /User/bob.
-
-    """    
-
-    global dll
-
-    libSQUIC_loc = libSQUIC_path
-    if sys.platform.startswith('darwin'):
-        libSQUIC_loc=libSQUIC_loc+"/libSQUIC.dylib"
-    elif sys.platform.startswith('linux'):
-        libSQUIC_loc=libSQUIC_loc+"/libSQUIC.so"
-    else:
-        raise Exception("#SQUIC: OS not supported.");
-
-    dll = CDLL(libSQUIC_loc)
-    
-    return True
-
+try:
+    dll = CDLL(os.path.join(lib_custom_location, squic_libs[sys.platform]))
+except KeyError:
+    raise Exception("#SQUIC: OS not supported.")
+except OSError as e:
+    print(e)
+    print("Squic library not found, please use SQUIC_LIB_PATH env variable!!")
+    exit(1)
 
 def run(Y, l, max_iter=100, tol=1e-3,verbose=1, M=None, X0=None, W0=None):
     """ 
@@ -94,7 +78,8 @@ Return values:
     """
 
     if(dll is None):
-        raise Exception("#SQUIC: libSQUIC not loaded, use SQUIC.PATH_TO_libSQUIC(libSQUIC_path).");
+        print(f"Error loading the SQUIC library: {squic_libs[sys.platform]}")
+        exit(1)
 
     p,n= Y.shape
 
