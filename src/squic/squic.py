@@ -35,48 +35,38 @@ except KeyError:
     raise Exception("#SQUIC: OS not supported.")
 except OSError as e:
     print(e)
-    print("Squic library not found, please use SQUIC_LIB_PATH env variable!!")
+    print("SQUIC library not found, please use SQUIC_LIB_PATH env variable!!")
     exit(1)
 
-def run(Y, l, max_iter=100, tol=1e-3,verbose=1, M=None, X0=None, W0=None):
-    """ 
-#################
-# Description:
-#################
-SQUIC is a second-order, L1-regularized maximum likelihood method for performant large-scale sparse precision matrix estimation.
-See help(SQUIC) for further details.
+def run(Y:np.array, l:float, max_iter:int=100, tol:float=1e-3,verbose:int=1, M:np.array=None, X0:np.array=None, W0:np.array=None)->list:
+    """SQUIC is a second-order, L1-regularized maximum likelihood method for performant large-scale sparse precision matrix estimation.
+See help(squic) for further details. Note: If max_iter=0, the returned value for the inverse of the precision matrix (W) is the sparse sample covariance matrix (S).
 
-#################
-# Usage :
-#################
-Arguments:
-    Y:          Input data in the form p (dimensions) by n (samples).
-    l:          (Non-zero positive parameter) Scalar tuning parameter controlling the sparsity of the precision matrix.
-    max_iter:   Maximum number of Newton iterations of the outer loop. Default: 100.
-    tol:        Tolerance for convergence and approximate inversion. Default: 1e-3.
-    verbose:    Level of printing output (0 or 1). Default: 1.
-    M:          The matrix encoding the sparsity pattern of the matrix tuning parameter, i.e., Lambda (p by p). Default: NULL.
-    X0:         Initial guess of the precision matrix (p by p). Default: NULL.
-    W0:        Initial guess of the inverse of the precision matrix (p by p). Default: NULL.
+    Args:
+        Y (np.array): Input data in the form p (dimensions) by n (samples).
+        l (float): Scalar tuning parameter λ>0.
+        max_iter (int, optional): Maximum number of Newton iterations of the outer loop. Defaults to 100.
+        tol (float, optional): Tolerance for convergence and approximate inversion. Defaults to 1e-3.
+        verbose (int, optional): Level of printing output (0 or 1). Defaults to 1.
+        M (np.array, optional):  Defines the penalty matrix parameters where Λ_ij = M_ij if M_ij ≠ 0 else λ. Defaults to Zeros (denoted by None).
+        X0 (np.array, optional): Initial guess of the precision matrix Θ. Defaults to Identity (denote by None).
+        W0 (np.array, optional): Initial guess of the inverse of the precision matrix W=inv(Θ). Defaults to Identity (denote by None).
 
-Note: If max_iter=0, the returned value for the inverse of the precision matrix (W) is the sparse sample covariance matrix (S).
-
-Return values:
-
- X: Estimated precision matrix (p by p).
- W: Estimated inverse of the precision matrix (p by p).
- info_times: List of different compute times.
-    [0] info_time_total: Total runtime.
-    [1] info_time_sample_cov: Runtime of the sample covariance matrix.
-    [2] info_time_optimize: Runtime of the Newton steps.
-    [3] info_time_factor: Runtime of the Cholesky factorization.
-    [4] info_time_approximate_inv: Runtime of the approximate matrix inversion.
-    [5] info_time_coordinate_upd: Runtime of the coordinate descent update.
- info_objective: Value of the objective at each Newton iteration.
- info_logdetX: Value of the log determinant of the precision matrix.
- info_trSX: Value of the trace of the sample covariance matrix times the precision matrix.
+    Returns:
+        list->[X,W,info_times,info_objective,info_logdetX,info_trSX]:
+        - X: Estimated precision matrix.
+        - W: Estimated inverse of the precision matrix.
+        - info_times: Component runtimes times.
+            info_times[0]: Total runtime.
+            info_times[1]: Runtime of the sample covariance matrix.
+            info_times[2]: Runtime of the Newton steps.
+            info_times[3]: Runtime of the Cholesky factorization.
+            info_times[4]: Runtime of the approximate matrix inversion.
+            info_times[5]: Runtime of the coordinate descent update.
+        - info_objective: Objective at each iteration.
+        - info_logdetX: Log-determinant of the estimated precision matrix.
+        - info_trSX: Trace of the sample covariance matrix times the final estimate precision matrix.
     """
-
     if(dll is None):
         print(f"Error loading the SQUIC library: {squic_libs[sys.platform]}")
         exit(1)
@@ -84,33 +74,33 @@ Return values:
     p,n= Y.shape
 
     if(p<3):
-        raise Exception("#SQUIC: number of random variables (p) must larger than 2");
+        raise ValueError("#SQUIC: number of random variables (p) must larger than 2");
 
     if(n<2):
-        raise Exception("#SQUIC: number of samples (n) must be larger than 1 .");
+        raise ValueError("#SQUIC: number of samples (n) must be larger than 1 .");
 
     if(l<=0):
-        raise Exception("#SQUIC: lambda must be great than zero.");
+        raise ValueError("#SQUIC: lambda must be great than zero.");
 
     if(max_iter<0):
-        raise Exception("#SQUIC: max_iter cannot be negative.");
+        raise ValueError("#SQUIC: max_iter cannot be negative.");
 
     if(tol<=0):
-        raise Exception("#SQUIC: tol must be great than zero.");
+        raise ValueError("#SQUIC: tol must be great than zero.");
 
     #################################################
     # if mode = [0,1,2,3,4] we Block-SQUIC or [5,6,7,8,9] Scalar-SQUIC
-    mode = c_int(0)
+    mode  = c_int(0)
 
     # The data needs to be fortran (column major)
-    Y=np.array(Y,order='F')
-    Y_ptr   = Y.ctypes.data_as(POINTER(c_double))
+    Y     = np.array(Y,order='F')
+    Y_ptr = Y.ctypes.data_as(POINTER(c_double))
 
     #################################################
     # tolerances
     # Hard code both tolerances to be the same
     term_tol = tol
-    inv_tol = tol
+    inv_tol  = tol
 
     #################################################
     # Matrices
@@ -132,12 +122,12 @@ Return values:
         # Check size
         [X0_p,X0_n]=X0.shape
         if(X0_p!=p or X0_n!=p ):
-            raise Exception("#SQUIC: X0 must be square matrix with size pxp..")
+            raise TypeError("#SQUIC: X0 must be square matrix with size pxp.")
 
         # Check size
         [W0_p,W0_n]=W0.shape
         if(W0_p!=p or W0_n!=p ):
-            raise Exception("#SQUIC: W0 must be square matrix with size pxp..")    
+            raise TypeError("#SQUIC: W0 must be square matrix with size pxp.")    
 
         # Force Symmetric
         X0=(X0+X0.T)/2;
