@@ -2,6 +2,10 @@
 
 SQUIC is a second-order, L1-regularized maximum likelihood method for performant large-scale sparse precision matrix estimation. This repository contains the source code for the Python(v3) interface of SQUIC. 
 
+
+## Notebook Example
+See [here](https://colab.research.google.com/drive/1iQB5hz07UMd5C1PR3w3xM3306BVcFGiO?usp=sharing) for an interactive session on using SQUIC with Google colab.  
+
 ## Installation
 
 #### Step 1:
