@@ -21,7 +21,7 @@ import numpy as np
 import sys
 from scipy.sparse import csr_matrix, identity
 
-lib_custom_location = os.environ.get("SQUIC_LIB_PATH", os.path.dirname(__file__))
+lib_custom_location = os.environ.get("SQUIC_LIB_PATH", os.getenv('HOME'))
 
 squic_libs = {
     "darwin" : "libSQUIC.dylib",
