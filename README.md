@@ -4,12 +4,8 @@ SQUIC is a second-order, L1-regularized maximum likelihood method for performant
 
 **For an interactive session using SQUIC see Google Colab:**
 
+[![SQUIC for Python](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1iQB5hz07UMd5C1PR3w3xM3306BVcFGiO?usp=sharing){:target="_blank"}
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1iQB5hz07UMd5C1PR3w3xM3306BVcFGiO?usp=sharing)
-
-
-
-[![Generic badge](https://img.shields.io/badge/Google%20Colabs-DDSG-green)](https://colab.research.google.com/drive/1iQB5hz07UMd5C1PR3w3xM3306BVcFGiO?usp=sharing)
 
 ## Installation
 
