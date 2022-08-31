@@ -13,7 +13,7 @@ Download the shared library ``libSQUIC`` from www.gitlab.ci.inf.usi.ch/SQUIC/lib
 #### Step 2:
 Run the following command to install the library:
 ```angular2
-pip install squic
+pip3 install squic
 ```
 _Note: The environment variable ``SQUIC_LIB_PATH`` defines the location of ``libSQUIC`` - this is by default set to the home directory of the user. If this is not the location of ``libSQUIC``, it can be changed via terminal ``bash> export SQUIC_LIB_PATH=/path/to/squic/``_
 
