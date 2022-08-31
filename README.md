@@ -4,7 +4,8 @@ SQUIC is a second-order, L1-regularized maximum likelihood method for performant
 
 
 ## Notebook Example
-See [here](https://colab.research.google.com/drive/1iQB5hz07UMd5C1PR3w3xM3306BVcFGiO?usp=sharing) for an interactive session on using SQUIC with Google colab.  
+For an interactive session using SQUIC see Google Colab here
+[![Generic badge](https://img.shields.io/badge/jupyter%20nbviewer-DDSG-green)](https://colab.research.google.com/drive/1iQB5hz07UMd5C1PR3w3xM3306BVcFGiO?usp=sharing)
 
 ## Installation
 
@@ -16,19 +17,7 @@ Run the following command to install the library:
 ```angular2
 pip install squic
 ```
-#### Step 3:
-Export the variable ``SQUIC_LIB_PATH`` with the location of the library downloaded in Step1, example:
-```angular2
-export SQUIC_LIB_PATH=~/SQUIC_LIB
-```
-#### Step 3:
-Load the SQUIC package:
-```angular2
-import squic
-```
-For further details type ``help(squic)`` in the Python command line.
-
-_Note: The number of threads used by SQUIC can be defined by setting the enviroment variable OMP_NUM_THREADS (e.g., ``base> export OMP_NUM_THREADS=12``). This may require a restart of the session)._
+_Note: The environment variable SQUIC_LIB_PATH defines the location of libSQUIC - this is by default set to the home directory of the user. If this is not the location of libSQUIC, it can be changed via terminal ``bash> export SQUIC_LIB_PATH=/path/to/squic/``_
 
 ## Example
 
