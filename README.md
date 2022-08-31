@@ -60,41 +60,10 @@ Please cite our publications if it helps your research:
  doi = {X}
 }
 ```
+For related research on SQUIC please see:
 
-### Research - Algorithem
-```
-@article{doi:10.1137/17M1147615,
-	author = {Bollh\"{o}fer, Matthias and Eftekhari, Aryan and Scheidegger, Simon and Schenk, Olaf},
-	title = {Large-scale Sparse Inverse Covariance Matrix Estimation},
-	journal = {SIAM Journal on Scientific Computing},
-	number = {1},
-	pages = {A380-A401},
-	volume = {41},
-	year = {2019},
-	doi = {https://doi.org/10.1137/17M1147615}
-  }
-```
+- [Bollhöfer, M., Eftekhari, A., Scheidegger, S. and Schenk, O., 2019. Large-Scale Sparse Inverse Covariance Matrix Estimation. SIAM Journal on Scientific Computing, 41(1), pp.A380-A401]({https://doi.org/10.1137/17M1147615})
 
-### Research - Parallelization
-```
-@InProceedings{8665763,
-  title={Distributed Memory Sparse Inverse Covariance Matrix Estimation on High-Performance Computing Architectures}, 
-  author={Eftekhari, Aryan and Bollh\"{o}fer, Matthias and Schenk, Olaf},
-  booktitle={SC18: International Conference for High Performance Computing, Networking, Storage and Analysis}, 
-  pages={253-264},
-  year={2018},
-  doi={https://doi.org/10.1109/SC.2018.00023}
-  }
-```
+- [Eftekhari, A., Bollhöfer, M. and Schenk, O., 2018, November. Distributed Memory Sparse Inverse Covariance Matrix Estimation on High-performance Computing Architectures. In SC18: International Conference for High Performance Computing, Networking, Storage and Analysis (pp. 253-264). IEEE](https://doi.org/10.1109/SC.2018.00023)
 
-### Research - Block Computation
-```
-@article{EFTEKHARI2021101389,
-	title = {Block-enhanced precision matrix estimation for large-scale datasets},
-	author = {Aryan Eftekhari and Dimosthenis Pasadakis and Matthias Bollh{\"o}fer and Simon Scheidegger and Olaf Schenk},
-	journal = {Journal of Computational Science},
-	pages = {101389},
-	volume = {53},
-	year = {2021},
-	doi = {https://doi.org/10.1016/j.jocs.2021.101389}
-```
+- [Eftekhari, A., Pasadakis, D., Bollhöfer, M., Scheidegger, S. and Schenk, O., 2021. Block-Enhanced Precision Matrix Estimation for Large-Scale Datasets. Journal of Computational Science, p. 101389](https://doi.org/10.1016/j.jocs.2021.101389)
