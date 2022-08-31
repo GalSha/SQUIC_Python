@@ -8,7 +8,7 @@ For an interactive session using SQUIC see Google Colab here
 ## Installation
 
 #### Step 1:
-Download the shared library libSQUIC from www.gitlab.ci.inf.usi.ch/SQUIC/libSQUIC, and follow its README instructions. The default and recommended location for libSQUIC is the home directory, i.e., ``~/``.
+Download the shared library ``libSQUIC`` from www.gitlab.ci.inf.usi.ch/SQUIC/libSQUIC, and follow its README instructions. The default and recommended location for ``libSQUIC`` is the home directory, i.e., ``~/``. Note that precompiled versions are available.
 
 #### Step 2:
 Run the following command to install the library:
