@@ -2,8 +2,6 @@
 
 SQUIC is a second-order, L1-regularized maximum likelihood method for performant large-scale sparse precision matrix estimation. This repository contains the source code for the Python(v3) interface of SQUIC. 
 
-
-## Notebook Example
 For an interactive session using SQUIC see Google Colab here
 [![Generic badge](https://img.shields.io/badge/jupyter%20nbviewer-DDSG-green)](https://colab.research.google.com/drive/1iQB5hz07UMd5C1PR3w3xM3306BVcFGiO?usp=sharing)
 
@@ -20,8 +18,7 @@ pip install squic
 _Note: The environment variable SQUIC_LIB_PATH defines the location of libSQUIC - this is by default set to the home directory of the user. If this is not the location of libSQUIC, it can be changed via terminal ``bash> export SQUIC_LIB_PATH=/path/to/squic/``_
 
 ## Example
-
-To run a simple example :
+In this example, we will use SQUIC to estimate the precision matrix of a synthetically generated dataset with correlated random variables, where the true precision matrix is tridiagonal.
 
 ```angular2
 import squic
