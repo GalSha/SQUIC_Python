@@ -62,7 +62,7 @@ Please cite our publications if it helps your research:
 ```
 For related research on SQUIC please see:
 
-- [Bollhöfer, M., Eftekhari, A., Scheidegger, S. and Schenk, O., 2019. Large-Scale Sparse Inverse Covariance Matrix Estimation. SIAM Journal on Scientific Computing, 41(1), pp.A380-A401]({https://doi.org/10.1137/17M1147615})
+- [Bollhöfer, M., Eftekhari, A., Scheidegger, S. and Schenk, O., 2019. Large-Scale Sparse Inverse Covariance Matrix Estimation. SIAM Journal on Scientific Computing, 41(1), pp.A380-A401](https://doi.org/10.1137/17M1147615)
 
 - [Eftekhari, A., Bollhöfer, M. and Schenk, O., 2018, November. Distributed Memory Sparse Inverse Covariance Matrix Estimation on High-performance Computing Architectures. In SC18: International Conference for High Performance Computing, Networking, Storage and Analysis (pp. 253-264). IEEE](https://doi.org/10.1109/SC.2018.00023)
 
