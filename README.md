@@ -47,7 +47,7 @@ Y = np.linalg.solve(L.T,np.random.randn(p,n))
 Please cite our publications if it helps your research:
 
 
-# Software
+### Software
 ```
 @article{X,
  author = {X},
@@ -61,7 +61,7 @@ Please cite our publications if it helps your research:
 }
 ```
 
-# Research - Algorithem
+### Research - Algorithem
 ```
 @article{doi:10.1137/17M1147615,
 	author = {Bollh\"{o}fer, Matthias and Eftekhari, Aryan and Scheidegger, Simon and Schenk, Olaf},
@@ -75,7 +75,7 @@ Please cite our publications if it helps your research:
   }
 ```
 
-# Research - Parallelization
+### Research - Parallelization
 ```
 @InProceedings{8665763,
   title={Distributed Memory Sparse Inverse Covariance Matrix Estimation on High-Performance Computing Architectures}, 
@@ -87,7 +87,7 @@ Please cite our publications if it helps your research:
   }
 ```
 
-# Research - Block Computation
+### Research - Block Computation
 ```
 @article{EFTEKHARI2021101389,
 	title = {Block-enhanced precision matrix estimation for large-scale datasets},
