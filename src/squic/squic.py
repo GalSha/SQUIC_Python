@@ -182,7 +182,7 @@ See help(squic) for further details. Note: If max_iter=0, the returned value for
         # Make all postive, drop all zeros and force symmetrix
         M.eliminate_zeros()
         M = abs(M)
-        M = (M + M)/2
+        M = (M + M.T)/2
 
         M_nnz  = c_long(M.nnz)
         dll.SQUIC_CPP_UTIL_memcopy_integer(byref(M_rinx) , np.int64(M.indices).ctypes.data_as(POINTER(c_long))  , M_nnz       )
