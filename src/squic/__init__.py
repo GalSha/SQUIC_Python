@@ -14,7 +14,7 @@ SQUIC is a second-order, L1-regularized maximum likelihood method for performant
 [_,S,info_times,_,_,_]=SQUIC.run(Y, lambda, max_iter = 0)
 
 Arguments:
-    Y:          Input data in the formp(dimensions) x n(samples).
+    Y:          Input data in the form p (dimensions) x n (samples).
     l:          Scalar tuning parameter a non-zero positive number.
     max_iter:   Maximum number of Newton iterations.
     tol:        Tolerance for convergence and approximate inversion.
@@ -33,7 +33,7 @@ Return values:
 
  X: Estimated precision matrix (p x p).
  W: Estimated inverse of the precision matrix (p x p).
- S: Sparse (threashold) sample covariance matrix (p x p).
+ S: Sparse (threshold) sample covariance matrix (p x p).
  info_times: Total runtime.
     [0] info_time_total: Total runtime.
     [1] info_time_sample_cov: Runtime of the sample covariance matrix.
