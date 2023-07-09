@@ -30,6 +30,7 @@ n = 100
 l = .4
 
 # generate a tridiagonal matrix
+np.random.seed(1)
 a = -0.5 * np.ones(p-1)
 b = 1.25 * np.ones(p)
 iC_star = np.diag(a,-1) + np.diag(b,0) + np.diag(a,1)
