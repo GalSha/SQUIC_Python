@@ -1,3 +1,5 @@
+**Forked from: [SQUIC/SQUIC_Python](https://www.gitlab.ci.inf.usi.ch/SQUIC/SQUIC_Python).**
+
 # SQUIC for Python
 SQUIC is a second-order, L1-regularized maximum likelihood method for performant large-scale sparse precision matrix estimation. This repository contains the source code for the Python(v3) interface of SQUIC. 
 
